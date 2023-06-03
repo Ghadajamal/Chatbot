@@ -1,0 +1,58 @@
+package chatDelivery;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class connectionDatabase {
+    public static Connection connectionDb() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:8889/DeliveryChatbot", "root", "root"
+            );
+            return connection;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+		return null;
+    }
+    
+    public static void executeSelect() {
+        try {
+        	
+        	Connection connection = connectionDb();
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Commande");
+
+            while (resultSet.next()) {
+                // retrieve data from result set
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                
+                System.out.println(id + " " + name + " " );
+
+                // print out the data
+            }
+
+            // close the connections
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+        public static void main(String[] args) {
+            try {
+            	executeSelect();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+}

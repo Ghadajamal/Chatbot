@@ -1,0 +1,71 @@
+package chatDelivery;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.Timer;
+
+import raven.chat.component.ChatBox;
+import raven.chat.model.ModelMessage;
+
+public class Communication {
+    private raven.chat.component.ChatArea chatArea;
+
+	private void generateTheReponse(String message ) {
+        Icon iconUser = new ImageIcon(getClass().getResource("../p1.png"));
+        Icon iconBot = new ImageIcon(getClass().getResource("../bot.png"));
+        String name = "User";
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy, hh:mmaa");
+
+        String date = df.format(new Date());
+
+        chatArea.addChatBox(new ModelMessage(iconUser, name, date, message), ChatBox.BoxType.RIGHT);
+        chatArea.clearTextAndGrabFocus();
+
+        if (message.contains("hi")) {
+        	makeTheReponse("hi there",iconBot);
+        } else {
+        	makeTheReponse("im sorry i can't understand",iconBot);
+        }
+    }
+	
+	
+	// to display the reponse of the chatbot
+    public void makeTheReponse(String textToAdd ,Icon icon , String user) {
+    	
+    	SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy, hh:mmaa");
+        String date = df.format(new Date());
+    	String pending ="Chatbot is writing...";
+
+		if (user == "Bot" ) {
+			ModelMessage mymsg = new ModelMessage(icon, "Bot", date, pending);
+	    	ChatBox MyChatbox = new ChatBox(ChatBox.BoxType.LEFT,mymsg);
+	        chatArea.addChatBox(mymsg, ChatBox.BoxType.LEFT);
+	        Timer timer = new Timer(1300, new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                // remove the Chatbot writing bubble from the chatPanel
+	                chatArea.removeChatBox(MyChatbox);
+	                chatArea.addChatBox(new ModelMessage(icon, "Bot", date, textToAdd), ChatBox.BoxType.LEFT);
+	                chatArea.clearTextAndGrabFocus();
+	                try {
+	                    Thread.sleep(2000);
+	                } catch (InterruptedException e1) {
+	                    e1.printStackTrace();
+	                }
+	            }
+	        });
+	        timer.setRepeats(false);
+	        timer.start();
+		}else {
+			chatArea.addChatBox(new ModelMessage(icon, "Guess", date, textToAdd), ChatBox.BoxType.RIGHT);
+	        chatArea.clearTextAndGrabFocus();
+		}
+    	
+        
+    }
+}

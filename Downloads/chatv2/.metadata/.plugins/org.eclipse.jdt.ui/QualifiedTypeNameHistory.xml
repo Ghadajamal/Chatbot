@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
+    <fullyQualifiedTypeName name="raven.chat.swing.ChatEvent"/>
+    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+    <fullyQualifiedTypeName name="javax.swing.Icon"/>
+    <fullyQualifiedTypeName name="raven.chat.model.ModelMessage"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.awt.Component"/>
+    <fullyQualifiedTypeName name="raven.chat.component.ChatBox"/>
+    <fullyQualifiedTypeName name="raven.chat.component.ChatBox.BoxType"/>
+    <fullyQualifiedTypeName name="java.awt.event.KeyAdapter"/>
+    <fullyQualifiedTypeName name="raven.chat.component.ChatArea"/>
+</qualifiedTypeNameHistroy>

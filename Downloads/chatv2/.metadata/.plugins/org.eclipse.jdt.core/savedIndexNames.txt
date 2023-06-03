@@ -1,0 +1,7 @@
+INDEX VERSION 1.131+/Users/amineelalaoui/Desktop/chatv2/.metadata/.plugins/org.eclipse.jdt.core
+2885186765.index
+3976958115.index
+2497969642.index
+2277434545.index
+1865797976.index
+1440805591.index

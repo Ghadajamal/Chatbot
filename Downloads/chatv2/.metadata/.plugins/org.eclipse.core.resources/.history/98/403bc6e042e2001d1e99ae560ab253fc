@@ -1,0 +1,10 @@
+package chatDelivery;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
+import java.util.*;
+
+public class ChatPanel extends JPanel {
+
+}
